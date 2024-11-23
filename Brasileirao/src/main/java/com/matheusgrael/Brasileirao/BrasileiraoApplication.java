@@ -9,14 +9,7 @@ public class BrasileiraoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BrasileiraoApplication.class, args);
 
-		//teste01
-		//teste02
-		//teste 03
-		//teste04
-		//05
-		//06
-		//07
-		//08
+		//01
 	}
 
 }

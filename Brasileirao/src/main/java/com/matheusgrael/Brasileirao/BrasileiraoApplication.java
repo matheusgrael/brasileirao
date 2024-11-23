@@ -10,6 +10,7 @@ public class BrasileiraoApplication {
 		SpringApplication.run(BrasileiraoApplication.class, args);
 
 		//teste01
+		//teste02
 	}
 
 }

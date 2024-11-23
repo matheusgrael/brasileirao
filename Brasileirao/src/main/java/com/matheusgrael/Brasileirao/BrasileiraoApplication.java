@@ -8,6 +8,8 @@ public class BrasileiraoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BrasileiraoApplication.class, args);
+
+		//teste01
 	}
 
 }

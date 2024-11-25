@@ -53,12 +53,14 @@ public class EquipesRepository {
 
     public void listarEquipes() {
         for(Equipes equipe : listaDeEquipes.values()) {
+            System.out.println("______________________________________________________________");
             System.out.println("Nome: " + equipe.getNome());
             System.out.println("Anos de História: " + equipe.anosHistoria());
             System.out.println("Estado: " + equipe.getEstado());
             System.out.println("Títulos Nacionais: " + equipe.getTitulosNacionais());
             System.out.println("Títulos Internacionais: " + equipe.getTitulosInternacionais());
             System.out.println("Joga a série A? : " + (equipe.isSerieA() ? "sim" : "não"));
+            System.out.println("______________________________________________________________");
         }
 
     }

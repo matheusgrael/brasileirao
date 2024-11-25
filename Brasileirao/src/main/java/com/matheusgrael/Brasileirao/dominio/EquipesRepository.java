@@ -44,4 +44,8 @@ public class EquipesRepository {
 
     Equipes gremio = new Equipes(UUID.randomUUID(), "Gremio", LocalDate.of(1902,05,04),
             "RS",8, 6, true);
+
+
+
 }
+

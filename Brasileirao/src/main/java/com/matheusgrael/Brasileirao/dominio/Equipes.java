@@ -19,7 +19,8 @@ public class Equipes {
     private String nome;
     private LocalDate anoFundacao;
     private String Estado;
-    private int titulos;
+    private int titulosNacionais;
+    private int titulosInternacionais;
     private boolean serieA;
 
     public int anosHistoria() {

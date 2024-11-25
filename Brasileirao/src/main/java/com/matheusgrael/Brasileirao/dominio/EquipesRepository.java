@@ -84,6 +84,14 @@ public class EquipesRepository {
         }
     }
 
+    public void deleteById(UUID id) {
+        if(listaDeEquipes.containsKey(id)) {
+            listaDeEquipes.remove(id);
+        } else {
+        System.out.println("ID " + id + " inexistente");
+        }
+    }
+
 
 }
 

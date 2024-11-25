@@ -1,6 +1,7 @@
 package com.matheusgrael.Brasileirao.dominio;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -44,6 +45,23 @@ public class EquipesRepository {
 
     Equipes gremio = new Equipes(UUID.randomUUID(), "Gremio", LocalDate.of(1902,05,04),
             "RS",8, 6, true);
+
+
+    public void addEquipe(Equipes equipe) {
+        listaDeEquipes.put(equipe.getId(), equipe);
+    }
+
+    public void listarEquipes() {
+        for(Equipes equipe : listaDeEquipes.values()) {
+            System.out.println("Nome: " + equipe.getNome());
+            System.out.println("Anos de História: " + equipe.anosHistoria());
+            System.out.println("Estado: " + equipe.getEstado());
+            System.out.println("Títulos Nacionais: " + equipe.getTitulosNacionais());
+            System.out.println("Títulos Internacionais: " + equipe.getTitulosInternacionais());
+            System.out.println("Joga a série A? : " + (equipe.isSerieA() ? "sim" : "não"));
+        }
+
+    }
 
 
 

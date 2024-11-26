@@ -1,11 +1,14 @@
 package com.matheusgrael.Brasileirao.dominio;
 
+import org.springframework.stereotype.Repository;
+
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class EquipesRepository {
+@Repository
+public class EquipeRepository {
 
     private Map<UUID, Equipe> listaDeEquipes = new HashMap<>();
 

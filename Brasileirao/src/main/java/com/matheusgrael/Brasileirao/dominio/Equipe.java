@@ -22,6 +22,7 @@ public class Equipe {
     private int titulosInternacionais;
     private boolean serieA;
 
+
     public int anosHistoria() {
         return (LocalDate.now().getYear() - anoFundacao.getYear());
     }

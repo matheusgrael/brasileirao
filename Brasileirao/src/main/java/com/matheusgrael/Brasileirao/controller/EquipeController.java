@@ -27,8 +27,12 @@ public class EquipeController {
     @GetMapping("/{id}")
     public ResponseEntity<Equipe> buscarPorId(@PathVariable UUID id) {
         Equipe equipe = equipeRepository.getEquipeById(id);
+        if(equipe != null) {
         return ResponseEntity.ok(equipe);
+        }
+        return ResponseEntity.notFound().build();
     }
+
 
 
 

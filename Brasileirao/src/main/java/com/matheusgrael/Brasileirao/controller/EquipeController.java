@@ -4,10 +4,7 @@ import com.matheusgrael.Brasileirao.dominio.Equipe;
 import com.matheusgrael.Brasileirao.dominio.EquipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 import java.util.UUID;
@@ -29,6 +26,15 @@ public class EquipeController {
         Equipe equipe = equipeRepository.getEquipeById(id);
         if(equipe != null) {
         return ResponseEntity.ok(equipe);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarPorId(@PathVariable UUID id) {
+        if (equipeRepository.getEquipeById(id) != null) {
+            equipeRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
     }

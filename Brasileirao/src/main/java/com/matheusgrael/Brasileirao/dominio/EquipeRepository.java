@@ -61,20 +61,12 @@ public class EquipeRepository {
 //    }
 
     public Equipe getEquipeById(UUID id) {
-        if(listaDeEquipes.containsKey(id)) {
             return listaDeEquipes.get(id);
-        } else {
-        System.out.println("ID " + id + " inexistente");
-            return null;
-        }
     }
 
+
     public void deleteById(UUID id) {
-        if(listaDeEquipes.containsKey(id)) {
             listaDeEquipes.remove(id);
-        } else {
-        System.out.println("ID " + id + " inexistente");
-        }
     }
 
 

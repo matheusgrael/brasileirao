@@ -43,7 +43,7 @@ public class EquipeRepository {
         listaDeEquipes.put(equipe.getId(), equipe);
     }
 
-    public Map<UUID, Equipe> listEquipes() {
+    public Map<UUID, Equipe> listAllEquipes() {
         return listaDeEquipes;
     }
 

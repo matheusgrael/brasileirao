@@ -18,7 +18,7 @@ public class EquipeController {
 
     @GetMapping
     public ResponseEntity<Map<UUID, Equipe>> listagem() {
-        return ResponseEntity.ok(equipeRepository.listEquipes());
+        return ResponseEntity.ok(equipeRepository.listAllEquipes());
     }
 
     @GetMapping("/{id}")

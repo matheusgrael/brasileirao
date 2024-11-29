@@ -53,10 +53,28 @@ public class EquipeController {
         Map<UUID, Equipe> equipes = equipeRepository.listAllEquipes();
         if(uf != null) {
             equipes.values().removeIf(e -> !e.getEstado().equalsIgnoreCase(uf));
+//  lambda expression usada para definir um critério para remoção de elementos do mapa equipes
+//  Para cada Equipe, aplica a condição fornecida
+//  Objetivo: Filtrar as equipes no mapa equipes para que apenas aquelas do estado especificado por uf permaneçam.
+// removeIf é um métod de Collection que remove elementos de acordo com uma condição fornecida como uma Predicate
         }
         return ResponseEntity.ok(equipes);
+//http://localhost:8080/equipe/uf?uf=RJ
     }
 
+    @GetMapping(params = "serieA")
+    public ResponseEntity<Map<UUID, Equipe>> buscarSerieA(@RequestParam boolean serieA) {
+//  Rota base: O mapeamento principal para o controlador é /equipe, definido pela anotação @RequestMapping("/equipe") no nível da classe.
+//  Filtro pela Série A: O métdo buscarSerieA é ativado quando um parâmetro de consulta (serieA) é enviado com a requisição, graças à anotação @GetMapping(params = "serieA").
+        Map<UUID, Equipe> equipes = equipeRepository.listAllEquipes();
+        if(serieA == true) {
+            equipes.values().removeIf(e -> e.isSerieA() == false);
+        } else {
+            equipes.values().removeIf(e -> e.isSerieA() == true);
+        }
+        return ResponseEntity.ok(equipes);
+//http://localhost:8080/equipe?serieA=true
+    }
 
 
 

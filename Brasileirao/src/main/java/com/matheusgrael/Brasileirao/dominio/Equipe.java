@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -15,6 +14,8 @@ import java.util.UUID;
 public class Equipe {
 
     private UUID id;
+    @NotBlank
+
     private String nome;
     private LocalDate anoFundacao;
     private String Estado;

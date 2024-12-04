@@ -16,7 +16,7 @@ public class EquipeRepository {
     addEquipe(new Equipe(UUID.randomUUID(), "Flamengo", LocalDate.of(1895,11,15),
                         "RJ",16, 6, true));
     addEquipe(new Equipe(UUID.randomUUID(), "Botafogo", LocalDate.of(1907,10,10),
-            "RJ",2, 1, true));
+            "RJ",2, 2, true));
     addEquipe(new Equipe(UUID.randomUUID(), "Fluminense", LocalDate.of(1897,07,03),
         "RJ",5, 3, true));
     addEquipe(new Equipe(UUID.randomUUID(), "Vasco", LocalDate.of(1893,04,25),

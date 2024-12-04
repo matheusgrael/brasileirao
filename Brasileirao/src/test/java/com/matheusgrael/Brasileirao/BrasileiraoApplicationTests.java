@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.UUID;
 
 @SpringBootTest
@@ -43,6 +44,21 @@ class BrasileiraoApplicationTests {
 		UUID amgID = amg.getId();
 		equipeRepository.deleteById(amgID);
 		Assertions.assertNull(equipeRepository.getEquipeById(amgID));
+	}
+
+	@Test
+	public void testeBuscaPorEstado() {
+		Equipe cap = new Equipe(UUID.randomUUID(), "Athlético-PR", LocalDate.of(1923,07,3), "PR",3,2, true);
+		Equipe cor = new Equipe(UUID.randomUUID(), "Coritiba", LocalDate.of(1909,02,22), "PR",2,0, false);
+		Equipe par = new Equipe(UUID.randomUUID(), "Paraná", LocalDate.of(1891,8,14), "PR",1,0, false);
+		equipeRepository.addEquipe(cap);
+		equipeRepository.addEquipe(cor);
+		equipeRepository.addEquipe(par);
+		Map<UUID, Equipe> equipesPR = equipeRepository.listAllEquipes();
+		equipesPR.values().removeIf(e -> !e.getEstado().equalsIgnoreCase("PR"));
+		Assertions.assertEquals(3, equipesPR.size());
+
+
 	}
 
 }

@@ -61,4 +61,15 @@ class BrasileiraoApplicationTests {
 		Assertions.assertFalse(cri.isSerieA());
 	}
 
+	@Test
+	public void adicionarEquipeDuplicada() {
+		UUID equipeID = UUID.randomUUID();
+		Equipe ava = new Equipe(equipeID, "Avaí", LocalDate.of(1920,5,20), "SC",0,0, false);
+		equipeRepository.addEquipe(ava);
+		Equipe ava2 = new Equipe(equipeID, "Avaí #2", LocalDate.of(1920,5,20), "SC",0,0, false);
+		equipeRepository.addEquipe(ava2);
+		Assertions.assertEquals("Avaí #2",equipeRepository.getEquipeById(equipeID).getNome());
+
+	}
+
 }

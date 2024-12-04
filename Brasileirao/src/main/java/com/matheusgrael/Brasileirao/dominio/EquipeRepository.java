@@ -32,7 +32,8 @@ public class EquipeRepository {
     }
 
     public Map<UUID, Equipe> listAllEquipes() {
-        return listaDeEquipes;
+        //return listaDeEquipes; */listAllEquipes retorna o Map diretamente. Isso permite que o estado interno do repositório seja alterado externamente. Considere retornar uma cópia do mapa para evitar alterações não controladas:
+        return new HashMap<>(listaDeEquipes);
     }
 
 //    public void listEquipes() {
@@ -49,12 +50,11 @@ public class EquipeRepository {
 //    }
 
     public Equipe getEquipeById(UUID id) {
-            return listaDeEquipes.get(id);
+        return listaDeEquipes.get(id);
     }
 
-
     public void deleteById(UUID id) {
-            listaDeEquipes.remove(id);
+        listaDeEquipes.remove(id);
     }
 
 

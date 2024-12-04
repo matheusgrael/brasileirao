@@ -50,7 +50,15 @@ class BrasileiraoApplicationTests {
 		Assertions.assertEquals(3, equipesPR.size());
 	}
 
-//	@Test
-//	public void testeBuscaPorSerieA
+	@Test
+	public void testeAtualizarEquipe() {
+		Equipe cri = new Equipe(UUID.randomUUID(), "Criciuma", LocalDate.of(1919,9,14), "SC",0,0, true);
+		equipeRepository.addEquipe(cri);
+		cri.setTitulosNacionais(1);
+		cri.setSerieA(false);
+		equipeRepository.addEquipe(cri);
+		Assertions.assertEquals(1,cri.getTitulosNacionais());
+		Assertions.assertFalse(cri.isSerieA());
+	}
 
 }

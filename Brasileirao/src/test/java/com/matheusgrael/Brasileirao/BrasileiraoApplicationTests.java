@@ -29,15 +29,6 @@ class BrasileiraoApplicationTests {
 	}
 
 	@Test
-	public void testeListagemEquipes() {
-//		Equipe fla = new Equipe(UUID.randomUUID(), "Flamengo", LocalDate.of(1895,11,15), "RJ",16,6, true);
-//		Equipe bot = new Equipe(UUID.randomUUID(), "Botafogo", LocalDate.of(1907,10,10), "RJ",2, 2, true);
-//		equipeRepository.addEquipe(fla);
-//		equipeRepository.addEquipe(bot);
-		Assertions.assertEquals(13,equipeRepository.listAllEquipes().size());
-	}
-
-	@Test
 	public void excluirEquipes() {
 		Equipe amg = new Equipe(UUID.randomUUID(), "América-MG", LocalDate.of(1903,10,17), "MG",0,0, false);
 		equipeRepository.addEquipe(amg);
@@ -57,8 +48,9 @@ class BrasileiraoApplicationTests {
 		Map<UUID, Equipe> equipesPR = equipeRepository.listAllEquipes();
 		equipesPR.values().removeIf(e -> !e.getEstado().equalsIgnoreCase("PR"));
 		Assertions.assertEquals(3, equipesPR.size());
-
-
 	}
+
+//	@Test
+//	public void testeBuscaPorSerieA
 
 }

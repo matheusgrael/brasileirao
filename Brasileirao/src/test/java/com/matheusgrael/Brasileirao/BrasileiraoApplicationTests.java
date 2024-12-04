@@ -69,7 +69,26 @@ class BrasileiraoApplicationTests {
 		Equipe ava2 = new Equipe(equipeID, "Avaí #2", LocalDate.of(1920,5,20), "SC",0,0, false);
 		equipeRepository.addEquipe(ava2);
 		Assertions.assertEquals("Avaí #2",equipeRepository.getEquipeById(equipeID).getNome());
-
 	}
+
+//	@Test
+//	public void testeValidacaoDados()  {
+//		IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {//O lambda (() -> { /* código */ }) é uma maneira concisa de definir uma função anônima em Java.
+//																											//No caso do teste, o lambda representa o bloco de código que está sendo testado — ele tenta criar uma nova instância da classe Equipe com argumentos inválidos.
+//																											//O métod assertThrows recebe dois argumentos:
+//																											//O tipo da exceção esperada: IllegalArgumentException.class.
+//																											//Um lambda que executa o código cuja exceção queremos verificar.
+//			new Equipe(UUID.randomUUID(), null, LocalDate.of(2000, 1, 1), "SP", 0, 0, false);
+//		});
+//		Assertions.assertEquals("O nome da equipe não pode ser nulo", exception.getMessage());
+																													/*Fluxo completo do teste com o lambda
+																											O lambda tenta executar um código inválido.
+																											O assertThrows monitora esse código em busca de uma exceção do tipo esperado.
+																											Se a exceção for lançada:
+																											O assertThrows captura a exceção.
+																											Retorna a instância da exceção para que você possa analisá-la (mensagem, por exemplo).
+																											Se nenhuma exceção for lançada ou uma exceção incorreta for lançada:
+																											O teste falha, indicando que o comportamento esperado não foi atendido.*/
+//}
 
 }

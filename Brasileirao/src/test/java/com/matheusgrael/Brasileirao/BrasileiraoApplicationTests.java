@@ -22,9 +22,9 @@ class BrasileiraoApplicationTests {
 
 	@Test
 	public void testeAdicionarEquipe() {
-		Equipe equipe = new Equipe(UUID.randomUUID(), "Volta Redonda",LocalDate.of(1995,05,14), "RJ", 0, 0, false);
-		equipeRepository.addEquipe(equipe);
-		Assertions.assertNotNull(equipeRepository.getEquipeById(equipe.getId()));
+		Equipe vr = new Equipe(UUID.randomUUID(), "Volta Redonda",LocalDate.of(1995,05,14), "RJ", 0, 0, false);
+		equipeRepository.addEquipe(vr);
+		Assertions.assertNotNull(equipeRepository.getEquipeById(vr.getId()));
 	}
 
 	@Test
@@ -34,6 +34,15 @@ class BrasileiraoApplicationTests {
 //		equipeRepository.addEquipe(fla);
 //		equipeRepository.addEquipe(bot);
 		Assertions.assertEquals(13,equipeRepository.listAllEquipes().size());
+	}
+
+	@Test
+	public void excluirEquipes() {
+		Equipe amg = new Equipe(UUID.randomUUID(), "América-MG", LocalDate.of(1903,10,17), "MG",0,0, false);
+		equipeRepository.addEquipe(amg);
+		UUID amgID = amg.getId();
+		equipeRepository.deleteById(amgID);
+		Assertions.assertNull(equipeRepository.getEquipeById(amgID));
 	}
 
 }

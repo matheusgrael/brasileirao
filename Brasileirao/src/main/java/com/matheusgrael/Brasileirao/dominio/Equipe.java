@@ -1,8 +1,6 @@
 package com.matheusgrael.Brasileirao.dominio;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,11 +16,13 @@ public class Equipe {
 
     private UUID id;
     @NotBlank(message = "Nome é um requisito necessário")
+    @Size(max = 30)
     private String nome;
     @NotNull(message = "Ano de fundação é um requisito necessário")
+    @Past(message = "A data deve ser no passado")
     private LocalDate anoFundacao;
     @NotBlank(message = "Estado é um requisito necessário")
-    private String Estado;
+    private String estado;
     @Min(value = 0, message = "O número deve ser >= 0")
     private int titulosNacionais;
     @Min(value = 0, message = "O número deve ser >= 0")
@@ -34,6 +34,11 @@ public class Equipe {
         return (LocalDate.now().getYear() - anoFundacao.getYear());
     }
 
+    public boolean pertenceAoEstado(String uf) {
+        return this.estado.equalsIgnoreCase(uf);
+    }
 
-
+    public boolean isDaSerieA() {
+        return this.serieA;
+    }
 }

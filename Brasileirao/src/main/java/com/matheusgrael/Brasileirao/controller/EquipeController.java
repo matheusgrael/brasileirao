@@ -2,7 +2,9 @@ package com.matheusgrael.Brasileirao.controller;
 
 import com.matheusgrael.Brasileirao.dominio.Equipe;
 import com.matheusgrael.Brasileirao.dominio.EquipeRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -74,6 +76,13 @@ public class EquipeController {
         }
         return ResponseEntity.ok(equipes);
 //http://localhost:8080/equipe?serieA=true
+    }
+
+    @PostMapping
+    public ResponseEntity<Equipe> criarEquipe(@Valid @RequestBody Equipe equipe) {
+        equipe.setId(UUID.randomUUID());
+        equipeRepository.addEquipe(equipe);
+        return ResponseEntity.status(HttpStatus.CREATED).body(equipe);
     }
 
 

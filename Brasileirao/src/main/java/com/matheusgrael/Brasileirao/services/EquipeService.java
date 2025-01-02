@@ -20,11 +20,19 @@ public class EquipeService {
     }
 
     public Equipe buscarPorId(UUID id) {
-        Equipe equipe = equipeRepository.getEquipeById(id);
+        return equipeRepository.getEquipeById(id);
     }
 
     public void deletarPorId(UUID id) {
         equipeRepository.deleteById(id);
+    }
+
+    public Map<UUID,Equipe> buscarPorEstado(String uf) {
+        Map<UUID,Equipe> equipes = equipeRepository.listAllEquipes();
+        if(uf != null) {
+            equipes.values().removeIf(e -> !e.getEstado().equalsIgnoreCase(uf));
+        }
+        return equipes;
     }
 
 

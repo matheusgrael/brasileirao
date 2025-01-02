@@ -2,6 +2,7 @@ package com.matheusgrael.Brasileirao.controller;
 
 import com.matheusgrael.Brasileirao.dominio.Equipe;
 import com.matheusgrael.Brasileirao.dominio.EquipeRepository;
+import com.matheusgrael.Brasileirao.services.EquipeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,11 +17,11 @@ import java.util.UUID;
 public class EquipeController {
 
     @Autowired
-    private EquipeRepository equipeRepository;
+    private EquipeService equipeService;
 
     @GetMapping
-    public ResponseEntity<Map<UUID, Equipe>> listagem() {
-        return ResponseEntity.ok(equipeRepository.listAllEquipes());
+    public ResponseEntity<Map<UUID, Equipe>> listAllEquipes() {
+        return ResponseEntity.ok(equipeService.listagem());
     }
 
     @GetMapping("/{id}")

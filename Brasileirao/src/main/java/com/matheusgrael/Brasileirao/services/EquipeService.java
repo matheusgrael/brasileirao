@@ -35,5 +35,21 @@ public class EquipeService {
         return equipes;
     }
 
+    public Map<UUID,Equipe> buscarSerieA(boolean serieA) {
+        Map<UUID,Equipe> equipes = equipeRepository.listAllEquipes();
+        if(serieA == true) {
+            equipes.values().removeIf(e -> e.isSerieA() == false)
+        } else {
+            equipes.values().removeIf(e -> e.isSerieA() == true)
+        }
+        return equipes;
+    }
+
+    public Equipe criarEquipe(Equipe equipe) {
+        equipe.setId(UUID.randomUUID());
+        equipeRepository.addEquipe(equipe);
+        return equipe;
+    }
+
 
 }

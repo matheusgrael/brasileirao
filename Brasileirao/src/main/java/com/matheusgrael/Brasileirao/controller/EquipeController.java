@@ -35,7 +35,7 @@ public class EquipeController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarPorId(@PathVariable UUID id) {
-        Equipe equipe = equipeService.buscarPorId();
+        Equipe equipe = equipeService.buscarPorId(id);
         if (equipe != null) {
             equipeService.deletarPorId(id);
             return ResponseEntity.noContent().build();
@@ -64,28 +64,31 @@ public class EquipeController {
         return ResponseEntity.ok(equipeService.buscarPorEstado(uf));
         }
 //http://localhost:8080/equipe/uf?uf=RJ
-    }
+
 
     @GetMapping(params = "serieA")
     public ResponseEntity<Map<UUID, Equipe>> buscarSerieA(@RequestParam boolean serieA) {
 //  Rota base: O mapeamento principal para o controlador é /equipe, definido pela anotação @RequestMapping("/equipe") no nível da classe.
 //  Filtro pela Série A: O métdo buscarSerieA é ativado quando um parâmetro de consulta (serieA) é enviado com a requisição, graças à anotação @GetMapping(params = "serieA").
-        //Map<UUID, Equipe> equipes = equipeRepository.listAllEquipes();
-       // if(serieA == true) {
-           // equipes.values().removeIf(e -> e.isSerieA() == false);
-        //} else {
-            //equipes.values().removeIf(e -> e.isSerieA() == true);
-        return ResponseEntity.ok();
+//        Map<UUID, Equipe> equipes = equipeRepository.listAllEquipes();
+//        if(serieA == true) {
+//            equipes.values().removeIf(e -> e.isSerieA() == false);
+//        } else {
+//            equipes.values().removeIf(e -> e.isSerieA() == true);
+        return ResponseEntity.ok(equipeService.buscarSerieA(serieA));
         }
 
 //http://localhost:8080/equipe?serieA=true
-    }
+
 
     @PostMapping
     public ResponseEntity<Equipe> criarEquipe(@Valid @RequestBody Equipe equipe) {
-        equipe.setId(UUID.randomUUID());
-        equipeRepository.addEquipe(equipe);
-        return ResponseEntity.status(HttpStatus.CREATED).body(equipe);
+        //equipe.setId(UUID.randomUUID());
+        //equipeRepository.addEquipe(equipe);
+        Equipe novaEquipe = equipeService.criarEquipe(equipe);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novaEquipe);
+    }
+
     }
 
 
@@ -93,4 +96,4 @@ public class EquipeController {
 
 
 
-}
+

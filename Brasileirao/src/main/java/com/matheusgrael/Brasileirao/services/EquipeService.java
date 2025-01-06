@@ -38,9 +38,9 @@ public class EquipeService {
     public Map<UUID,Equipe> buscarSerieA(boolean serieA) {
         Map<UUID,Equipe> equipes = equipeRepository.listAllEquipes();
         if(serieA == true) {
-            equipes.values().removeIf(e -> e.isSerieA() == false)
+            equipes.values().removeIf(e -> e.isSerieA() == false);
         } else {
-            equipes.values().removeIf(e -> e.isSerieA() == true)
+            equipes.values().removeIf(e -> e.isSerieA() == true);
         }
         return equipes;
     }
